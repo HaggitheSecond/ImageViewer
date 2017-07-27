@@ -16,7 +16,9 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  HorizontalAlignment="Stretch"
                  VerticalAlignment="Stretch"
-                 BorderThickness="0">
+                 BorderThickness="0"
+                 HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel ItemHeight="100"
@@ -25,24 +27,28 @@
                 </ItemsPanelTemplate>
             </ListBox.ItemsPanel>
             <ListBox.Resources>
+                <Style TargetType="Grid"> 
+                    <Setter Property="Margin"
+                            Value="5,5,5,5"/>
+                </Style>
                 <DataTemplate DataType="{x:Type directoryItems:SubDirectoryItem}">
-                    <Grid Margin="5,5,5,5">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Image Source="pack://application:,,,/Resources/Icons/Folder-64.png"
                                Grid.Row="0"
-                               ToolTip="{Binding Name}"
-                               HorizontalAlignment="Center"/>
+                               ToolTip="{Binding Name}"/>
                         <TextBlock Text="{Binding Name, Converter={StaticResource StringTruncateConverter}, ConverterParameter=30}"
                                    Grid.Row="1"
                                    HorizontalAlignment="Center"
-                                   TextWrapping="Wrap"/>
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type directoryItems:FileDirectoryItem}">
-                    <Grid Margin="5,5,5,5">
+                    <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
@@ -52,9 +58,9 @@
                                ToolTip="{Binding Name}"
                                HorizontalAlignment="Center"/>
                         <TextBlock Text="{Binding Name, Converter={StaticResource StringTruncateConverter}, ConverterParameter=30}"
-                                   Grid.Row="1"
-                                   HorizontalAlignment="Center"                                   
-                                   TextWrapping="Wrap"/>
+                                   Grid.Row="1"                                
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"/>
                     </Grid>
                 </DataTemplate>
             </ListBox.Resources>
